@@ -1,0 +1,82 @@
+Item,X,Y
+Soda,3,3
+Cereal,3,4
+Chips,3,5
+Water,3,6
+Ketchup,3,7
+Cleaning Spray,3,8
+Plant Fertilizer,3,9
+Cheese,3,10
+Dish Soap,3,11
+Sponges,4,3
+Salmon,4,4
+BBQ Sauce,4,5
+Potatoes,4,6
+Pickles,4,7
+Toilet Paper,4,8
+Shaving Cream,4,9
+Laundry Detergent,4,10
+Ironing Board,4,11
+Feminine Hygiene Products,5,3
+Razors,5,4
+Garden Hose,5,5
+Ice Cream,5,6
+Toothbrush,5,7
+Insect Repellent,5,8
+Bread,5,9
+Lawn Mower,5,10
+Butter,5,11
+Paper Towels,6,3
+Shrimp,6,4
+Cleaning Rags,6,5
+Rice,6,6
+Hand Sanitizer,6,7
+Tuna,6,8
+Shower Gel,6,9
+Soap,6,10
+Tea,6,11
+Shampoo,7,3
+Baby Wipes,7,4
+Dustpan,7,5
+Deodorant,7,6
+Coffee,7,7
+Honey,7,8
+Peanut Butter,7,9
+Olive Oil,7,10
+Vacuum Cleaner,7,11
+Eggs,8,3
+Hair Gel,8,4
+Carrots,8,5
+Apple,8,6
+Mop,8,7
+Spinach,8,8
+Chicken,8,9
+Tomatoes,8,10
+Mustard,8,11
+Milk,9,3
+Broom,9,4
+Trash Bags,9,5
+Orange,9,6
+Mayonnaise,9,7
+Dishware,9,8
+Toothpaste,9,9
+Power Strips,9,10
+Yogurt,9,11
+Banana,10,3
+Beef,10,4
+Bath Towels,10,5
+Air Freshener,10,6
+Jam,10,7
+Syrup,10,8
+Pancake Mix,10,9
+Tissues,10,10
+Pasta,10,11
+Cereal Bars,11,3
+Vinegar,11,4
+Canned Soup,11,5
+Light Bulbs,11,6
+Trash Cans,11,7
+Iron,11,8
+Diapers,11,9
+Extension Cords,11,10
+Onions,11,11
