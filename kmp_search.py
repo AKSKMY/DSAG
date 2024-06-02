@@ -7,8 +7,16 @@ app = Flask(__name__)
 file_path = r"Dataset\item_list_with_coordinates.csv"
 data = pd.read_csv(file_path)
 
+# Ensure column names are consistent with your dataset
+item_column_name = 'Item'  # Replace with the actual column name for items
+x_column_name = 'X'  # Replace with the actual column name for X coordinates
+y_column_name = 'Y'  # Replace with the actual column name for Y coordinates
+
 # KMP Algorithm
 def kmp_search(pattern, text):
+    pattern = pattern.lower()
+    text = text.lower()
+
     def compute_lps(pattern):
         lps = [0] * len(pattern)
         length = 0
@@ -48,25 +56,47 @@ template = """
 <!doctype html>
 <html>
 <head>
-    <title>Pattern Search</title>
+    <title>Warehouse Inventory Search</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        mark {
+            background-color: yellow;
+        }
+    </style>
 </head>
 <body>
-    <h1>Search Pattern in Dataset</h1>
+    <h1>Warehouse Inventory Search</h1>
     <form method="post">
-        Pattern: <input type="text" name="pattern">
+        <label for="pattern">Search Pattern:</label>
+        <input type="text" id="pattern" name="pattern" required>
         <input type="submit" value="Search">
     </form>
     {% if matches %}
     <h2>Matches Found:</h2>
-    <table border="1">
+    <table>
         <tr>
             <th>Row Index</th>
-            <th>Content</th>
+            <th>Item</th>
+            <th>Coordinates</th>
         </tr>
         {% for match in matches %}
         <tr>
             <td>{{ match[0] }}</td>
             <td>{{ match[1] }}</td>
+            <td>{{ match[2] }}</td>
         </tr>
         {% endfor %}
     </table>
@@ -80,18 +110,31 @@ def index():
     matches = []
     if request.method == 'POST':
         pattern = request.form['pattern']
+        if not pattern:
+            return render_template_string(template, matches=[])
+
         text = data.to_string(index=False)
         indices = kmp_search(pattern, text)
         
-        # Find corresponding rows
+        # Find corresponding rows and highlight matches
         for idx in indices:
             row_start = text.rfind('\n', 0, idx) + 1
             row_end = text.find('\n', idx)
             if row_end == -1:
                 row_end = len(text)
             row_content = text[row_start:row_end]
+            highlighted_content = (
+                row_content[:idx - row_start] +
+                "<mark>" + row_content[idx - row_start:idx - row_start + len(pattern)] + "</mark>" +
+                row_content[idx - row_start + len(pattern):]
+            )
             row_index = len(text[:row_start].split('\n')) - 2  # Adjust for zero-based index
-            matches.append((row_index, row_content))
+            
+            item = data.iloc[row_index][item_column_name]
+            x_coordinate = data.iloc[row_index][x_column_name]
+            y_coordinate = data.iloc[row_index][y_column_name]
+            coordinates = f"({x_coordinate}, {y_coordinate})"
+            matches.append((row_index, item, coordinates))
     
     return render_template_string(template, matches=matches)
 
