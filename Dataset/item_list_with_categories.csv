@@ -1,82 +1,82 @@
-Item,X,Y,Category
-Soda,3,3,Beverages
-Cereal,3,4,Breakfast
-Chips,3,5,Snacks
-Water,3,6,Beverages
-Ketchup,3,7,Condiments
-Cleaning Spray,3,8,Cleaning Items
-Plant Fertilizer,3,9,Gardening
-Cheese,3,10,Dairy
-Dish Soap,3,11,Cleaning Items
-Sponges,4,3,Cleaning Items
-Salmon,4,4,Seafood
-BBQ Sauce,4,5,Sauces
-Potatoes,4,6,Vegetables
-Pickles,4,7,Vegetables
-Toilet Paper,4,8,Toiletries
-Shaving Cream,4,9,Toiletries
-Laundry Detergent,4,10,Laundry
-Ironing Board,4,11,Home Essentials
-Feminine Hygiene Products,5,3,Toiletries
-Razors,5,4,Toiletries
-Garden Hose,5,5,Gardening
-Ice Cream,5,6,Cold Products
-Toothbrush,5,7,Toiletries
-Insect Repellent,5,8,Home Essentials
-Bread,5,9,Bakery
-Lawn Mower,5,10,Electronics
-Butter,5,11,Dairy
-Paper Towels,6,3,Kitchen
-Shrimp,6,4,Seafood
-Cleaning Rags,6,5,Cleaning Items
-Rice,6,6,Food
-Hand Sanitizer,6,7,Home Essentials
-Tuna,6,8,Seafood
-Shower Gel,6,9,Body Care
-Soap,6,10,Body Care
-Tea,6,11,Beverages
-Shampoo,7,3,Body Care
-Baby Wipes,7,4,Cleaning Items
-Dustpan,7,5,Cleaning Items
-Deodorant,7,6,Body Care
-Coffee,7,7,Beverages
-Honey,7,8,Food
-Peanut Butter,7,9,Food
-Olive Oil,7,10,Food
-Vacuum Cleaner,7,11,Electronics
-Eggs,8,3,Food
-Hair Gel,8,4,Body Care
-Carrots,8,5,Vegetables
-Apple,8,6,Fruits
-Mop,8,7,Cleaning Items
-Spinach,8,8,Vegetables
-Chicken,8,9,Poultry
-Tomatoes,8,10,Vegetables
-Mustard,8,11,Sauce
-Milk,9,3,Dairy
-Broom,9,4,Cleaning Items
-Trash Bags,9,5,Home Essentials
-Orange,9,6,Fruits
-Mayonnaise,9,7,Sauce
-Dishware,9,8,Kitchen
-Toothpaste,9,9,Toiletries
-Power Strips,9,10,Electronics
-Yogurt,9,11,Food
-Banana,10,3,Fruits
-Beef,10,4,Poultry
-Bath Towels,10,5,Toiletries
-Air Freshener,10,6,Cleaning Items
-Jam,10,7,Food
-Syrup,10,8,Food
-Pancake Mix,10,9,Food
-Tissues,10,10,Cleaning Items
-Pasta,10,11,Food
-Cereal Bars,11,3,Food
-Vinegar,11,4,Sauces
-Canned Soup,11,5,Ready consumables
-Light Bulbs,11,6,Electronics
-Trash Cans,11,7,Home Essentials
-Iron,11,8,Electronics
-Diapers,11,9,Baby Products
-Extension Cords,11,10,Electronics
-Onions,11,11,Food
+Item
+Soda
+Cereal
+Chips
+Water
+Ketchup
+Cleaning Spray
+Plant Fertilizer
+Cheese
+Dish Soap
+Sponges
+Salmon
+BBQ Sauce
+Potatoes
+Pickles
+Toilet Paper
+Shaving Cream
+Laundry Detergent
+Ironing Board
+Feminine Hygiene Products
+Razors
+Garden Hose
+Ice Cream
+Toothbrush
+Insect Repellent
+Bread
+Lawn Mower
+Butter
+Paper Towels
+Shrimp
+Cleaning Rags
+Rice
+Hand Sanitizer
+Tuna
+Shower Gel
+Soap
+Tea
+Shampoo
+Baby Wipes
+Dustpan
+Deodorant
+Coffee
+Honey
+Peanut Butter
+Olive Oil
+Vacuum Cleaner
+Eggs
+Hair Gel
+Carrots
+Apple
+Mop
+Spinach
+Chicken
+Tomatoes
+Mustard
+Milk
+Broom
+Trash Bags
+Orange
+Mayonnaise
+Dishware
+Toothpaste
+Power Strips
+Yogurt
+Banana
+Beef
+Bath Towels
+Air Freshener
+Jam
+Syrup
+Pancake Mix
+Tissues
+Pasta
+Cereal Bars
+Vinegar
+Canned Soup
+Light Bulbs
+Trash Cans
+Iron
+Diapers
+Extension Cords
+Onions
