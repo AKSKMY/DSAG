@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def convert_to_unique_item():
     df = pd.read_csv(r"Dataset\Retail_Transactions_Dataset.csv")
     items_column = df['Product']
@@ -88,8 +87,7 @@ def add_item_location():
 def convert_to_nodes():
     df = pd.read_csv(r"Dataset\item_list_with_coordinates.csv")
     # Create a dictionary from the DataFrame
-    nodes = dict(zip(df['Item'], zip(df['X'], df['Y'])))
-    print(nodes)
+    df = dict(zip(df['Item'], zip(df['X'], df['Y'], df['Z'])))
 
 # convert_to_nodes()
-add_item_location()
+# add_item_location()
