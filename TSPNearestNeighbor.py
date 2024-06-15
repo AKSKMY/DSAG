@@ -71,9 +71,23 @@ def nearest_neighbor_tsp(distance_matrix, start, end):
                             candidates.append((node, dist_to_end))
                     
                 if candidates:
-                    nearest = min(candidates, key=lambda x: x[1])[0]
+                    if currentCoordinates[0] in [min_x, max_x]:
+                        if end_item_y == currentCoordinates[1]:
+                            MovabaleNode = [i for i in unvisited if coordinates[i][1] == currentCoordinates[1] and coordinates[i][2] == currentCoordinates[2]]
+                            # print(MovabaleNode, '1', item_names[43])
+                            if MovabaleNode != []:     
+                                nearest = min(MovabaleNode, key=lambda x: distance_matrix[current, x])
+                        else:
+                            filtered_candidates = [c for c in candidates if coordinates[c[0]][0] == currentCoordinates[0]]
+                            if filtered_candidates:
+                                nearest = min(filtered_candidates, key=lambda x: x[1])[0]
+                            else:
+                                nearest = min(candidates, key=lambda x: x[1])[0]
+                    else:
+                        nearest = min(candidates, key=lambda x: x[1])[0]
                 else:
                     nearest = min(nearest_neighbors, key=lambda x: distance_matrix[current, x])
+                    
             elif end_item_z == currentCoordinates[2]:
                 # If it is check whether it is at the correct shelf
                 if end_item_y == currentCoordinates[1]:
@@ -94,7 +108,7 @@ def nearest_neighbor_tsp(distance_matrix, start, end):
                                 nearest = min(same_z_nodes_excluding_current_y, key=lambda x: distance_matrix[current, x])
             
             elif "Stairs" in item_names[nearest]:
-                print("Proceed")
+                pass
                             
         
         # print(path)
@@ -106,8 +120,8 @@ def nearest_neighbor_tsp(distance_matrix, start, end):
     return path
 
 # Specify start and end points
-start_item = 'Pickles'
-end_item = ['Coffee', 'Soap', 'Iron']
+start_item = 'Shampoo'
+end_item = ['Bread', 'Carrots', 'Honey']
 
 def find_shortest_path(start_item, end_items, TSPnodes):
     # Retrieve the coordinates for the start item
@@ -147,25 +161,29 @@ def find_shortest_path(start_item, end_items, TSPnodes):
         
         # Remove the closest item from the remaining items
         remaining_items.pop(closest_index)
+    # print(path)
     
     return path
 
 shortest_path = find_shortest_path(start_item, end_item, TSPnodes)
-
+itemlist = []
 for i in range(len(end_item)):
     if i == 0:
         path_indices = nearest_neighbor_tsp(distance_matrix, shortest_path[i], shortest_path[i+1])       
         path = [item_names[j] for j in path_indices]
         for item in path:
-            print(f"{item}: {TSPnodes[item]}")
+            # print(f"{item}: {TSPnodes[item]}")
             # print(f"{item}")
+            itemlist.append(item)
     else:
         path_indices = nearest_neighbor_tsp(distance_matrix, shortest_path[i], shortest_path[i+1])  
         path1 = [item_names[j] for j in path_indices]
         for item in path1:
-            print(f"{item}: {TSPnodes[item]}")
+            # print(f"{item}: {TSPnodes[item]}")
             # print(f"{item}")
-            
+            itemlist.append(item)
+
+
 # print(shortest_path)
 
 # Get the path using nearest neighbor algorithm
