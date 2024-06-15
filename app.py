@@ -19,6 +19,8 @@ template = '''
     {% for key, plot in plots.items() %}
         <div>{{ plot | safe }}</div>
     {% endfor %}
+    <h2>Route in Sequence: From {{ shortest_path | safe }}</h2>
+    <h3>{{ array | safe }}</h3>
 </body>
 </html>
 '''
@@ -94,9 +96,9 @@ def index():
 
         fig.update_layout(title=title)
         plots[key] = pio.to_html(fig, full_html=False)
-    print(itemlist)
+    array = itemlist
 
-    return render_template_string(template, plots=plots)
+    return render_template_string(template, plots=plots, array=array, shortest_path=shortest_path)
 
 def separate_df(df, column_name):
     unique_values = df[column_name].unique()
