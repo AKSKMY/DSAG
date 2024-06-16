@@ -1,7 +1,16 @@
 # NOT COMPLETED - IN PROGRESS / TESTING
 
+from flask import Flask, request, render_template_string
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import io
+import base64
 from itertools import combinations
 
+app = Flask(__name__)
+
+#Keep track of counts of itemsets of size 2
 class hashTable:
     def __init__(self, hash_table_size):
         self.hash_table = [0] * hash_table_size
@@ -14,6 +23,10 @@ class hashTable:
         hash_index = (itemset[0]*10+itemset[1])%7
         return self.hash_table[hash_index]
 
+
+
+# Generate and prune the candidate itemsets for next level using
+# frequent itemsets of the current level
 def generateCandidateItemsets(level_k, level_frequent_itemsets):
 
     n_frequent_itemsets = len(level_frequent_itemsets)
@@ -25,6 +38,7 @@ def generateCandidateItemsets(level_k, level_frequent_itemsets):
             candidate_itemset = level_frequent_itemsets[i][:level_k-1] + [level_frequent_itemsets[i][level_k-1]] + [level_frequent_itemsets[j][level_k-1]]
             candidate_itemset_pass = False
 
+            #current level number
             if level_k == 1:
                 candidate_itemset_pass = True
             elif (level_k == 2) and (candidate_itemset[-2:] in level_frequent_itemsets):
@@ -39,6 +53,7 @@ def generateCandidateItemsets(level_k, level_frequent_itemsets):
 
     return candidate_frequent_itemsets
 
+#Extract frequent itemsets from transactions using hash table and transaction reuduction
 def aprioriAlgorithm(transactions, min_support_count):
 
     # Create a mapping of item names to integers
@@ -112,8 +127,10 @@ def aprioriAlgorithm(transactions, min_support_count):
 
     return frequent_itemsets_named
 
-if __name__ == '__main__':
-    """ Example 4.4: Data Mining - Arjun K Pujari """
+
+@app.route('/')
+def index():
+    # Example transactions data
     transactions = [
         {'eggs', 'milk', 'bread'},
         {'vegetables', 'bread'},
@@ -130,9 +147,79 @@ if __name__ == '__main__':
 
     min_support_count = 3
 
-    # Generate list of all frequent itemsets using Transaction Reduction based Apriori
+    # Generate frequent itemsets using the Apriori algorithm
     frequent_itemsets = aprioriAlgorithm(transactions, min_support_count)
 
-    print("\nFREQUENT ITEMSETS (Min Support Count = {})".format(min_support_count))
-    for frequent_itemset in frequent_itemsets:
-        print(frequent_itemset)
+    # Create the plot
+    plt.rcParams['figure.figsize'] = (18, 7)
+    color = plt.cm.magma(np.linspace(0, 1, 40))
+    data = pd.Series([item for sublist in transactions for item in sublist])
+    ax = data.value_counts().head(40).plot.bar(color=color)
+    plt.title('Frequency of Most Popular Items', fontsize=20)
+    plt.xticks(rotation=90)
+    plt.grid()
+
+    # Save the plot to a BytesIO object
+    img = io.BytesIO()
+    plt.savefig(img, format='png')
+    img.seek(0)
+    plot_url = base64.b64encode(img.getvalue()).decode()
+
+    # Clear the current plot
+    plt.close()
+
+    # HTML template with embedded image and frequent itemsets
+    template = '''
+    <!DOCTYPE html>
+    <html lang="en">
+    <style>
+    img {
+        width:70%;
+        height:70%;
+    }
+    </style>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Apriori Algorithm Results</title>
+    </head>
+    <body>
+        <h1>Frequency of Most Popular Items</h1>
+        <img src="data:image/png;base64,{{ plot_url }}">
+        <h2>Frequent Itemsets (Min Support Count = {{ min_support_count }})</h2>
+        <ul>
+        {% for itemset in frequent_itemsets %}
+            <li>{{ itemset }}</li>
+        {% endfor %}
+        </ul>
+    </body>
+    </html>
+    '''
+    return render_template_string(template, plot_url=plot_url, frequent_itemsets=frequent_itemsets, min_support_count=min_support_count)
+
+if __name__ == '__main__':
+    app.run(debug=True)
+    
+    #Example of transactions as data
+    # transactions = [
+    #     {'eggs', 'milk', 'bread'},
+    #     {'vegetables', 'bread'},
+    #     {'vegetables', 'milk'},
+    #     {'eggs', 'vegetables', 'bread'},
+    #     {'milk', 'cheese'},
+    #     {'vegetables', 'milk'},
+    #     {'milk', 'cheese'},
+    #     {'eggs', 'milk', 'bread'},
+    #     {'eggs', 'vegetables', 'milk'},
+    #     {'eggs', 'bread'},
+    #     {'milk', 'bread', 'cheese'}
+    # ]
+
+    #min_support_count = 3
+
+    # Generate list of all frequent itemsets using Transaction Reduction based Apriori
+    # frequent_itemsets = aprioriAlgorithm(transactions, min_support_count)
+
+    # print("\nFREQUENT ITEMSETS (Min Support Count = {})".format(min_support_count))
+    # for frequent_itemset in frequent_itemsets:
+    #     print(frequent_itemset)
