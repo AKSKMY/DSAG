@@ -1,13 +1,13 @@
 import pandas as pd
 import numpy as np
-from abc_analysis import abc_analysis, abc_plot
+#from abc_analysis import abc_analysis, abc_plot
 
 
 # Load the datasets
-#file_path = "Dataset\Retail_Transactions_Dataset.csv"
-#data = pd.read_csv(file_path)
+file_path = r"Dataset\Retail_Transactions_Dataset.zip"
+data = pd.read_csv(file_path)
 
-file_path = "Dataset\\item_count.csv"
+file_path = r"Dataset\item_count.csv"
 item = pd.read_csv(file_path)
 
 
@@ -29,6 +29,22 @@ def ABC():
     item = item.sort_values(by='Total_Cost', ascending = False)
     #calculate percentage
     item['Item_percent'] = (item['Total_Cost'] / item['Total_Cost'].sum()) * 100
+
+    #sort into class A, B and C using 70-20-10
+    total = 0
+    indexA = -1
+    indexB = -1
+
+    for i in range(len(item['Item_percent'])):
+        total += item["Item_percent"].iloc[i] 
+        if total <= 70:
+            indexA = i
+        elif total <= 90:
+            indexB = i
+
+    # create new column A,B or C for items
+    
+
     # Plot the ABC analysis
     #abc = abc_analysis(item['AddCost'], True)
 
