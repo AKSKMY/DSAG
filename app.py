@@ -49,9 +49,9 @@ template = '''
 #     separated_dfs = {value: df[df[column_name] == value] for value in unique_values}
 #     return separated_dfs
 
-start_item = 'Lawn Mower'
-end_item = ['Trash Bags', 'Broom', 'Carrots']
-shortest_path = TSP.find_shortest_path(start_item, end_item, TSP.TSPnodes)
+start_item = 'Cheese'
+end_item = ['Shampoo', 'Dishware', 'Coffee']
+shortest_path = TSP.itemSort(start_item, end_item, TSP.TSPnodes)
 itemlist = []
 for i in range(len(end_item)):
     if i == 0:
