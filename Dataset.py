@@ -41,10 +41,21 @@ def groupingItems():
 def add_item_location():
     df = pd.read_csv(r"Dataset\items_updated.csv")
     
+    # Add the missing coordinates for each z-level
+    missing_items = [
+        {'Item': 'Missing Item 1', 'Group': 'Fresh Food', 'X': 15, 'Y': 10, 'Z': 2},
+        {'Item': 'Missing Item 2', 'Group': 'Home Care', 'X': 15, 'Y': 10, 'Z': 7},
+        {'Item': 'Missing Item 3', 'Group': 'Pantry and Household Supplies', 'X': 15, 'Y': 10, 'Z': 12}
+    ]
+    
+    # Convert the missing items list to DataFrame and append to existing DataFrame
+    missing_df = pd.DataFrame(missing_items)
+    df = pd.concat([df, missing_df], ignore_index=True)
+
     # Rearrange the dataset by group
     df = df.sort_values(by='Group').reset_index(drop=True)
     
-    # Initialize the starting coordinates of the first time
+    # Initialize the starting coordinates of the first item
     start_x, start_y = 3, 4
     items_per_aisle = 4
     current_group = None
@@ -90,4 +101,4 @@ def convert_to_nodes():
     df = dict(zip(df['Item'], zip(df['X'], df['Y'], df['Z'])))
 
 # convert_to_nodes()
-# add_item_location()
+add_item_location()
