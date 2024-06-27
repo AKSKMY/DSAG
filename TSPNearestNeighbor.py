@@ -54,11 +54,6 @@ def nearest_neighbor_tsp(distance_matrix, start, end):
                 # Travel through stairs if it's not at the correct level
                 if end_item_z != currentCoordinates[2]:
                     nearest = min(stairs_indices, key=lambda x: distance_matrix[current, x])
-                    print("Hello1", item_names[nearest])
-                    if coordinates[nearest][2] != end_item_z:
-                        nearest1 = sorted(stairs_indices, key=lambda x: distance_matrix[current, x])
-                        nearest = nearest1[1]
-                        print("Hello2", item_names[nearest])
                 # Else find the nearest node
                 else:
                     nearest = min(unvisited, key=lambda x: distance_matrix[current, x])
@@ -155,8 +150,8 @@ def nearest_neighbor_tsp(distance_matrix, start, end):
     return path
 
 # Specify start and end points
-start_item = 'Cheese'
-end_item = ['Shampoo', 'Dishware', 'Coffee']
+start_item = 'Bread'
+end_item = ['Mop', 'Honey', 'Hair Gel']
 
 def itemSort(start_item, end_item, TSPnodes):
     # List to store the result
@@ -188,7 +183,6 @@ shortest_path = itemSort(start_item, end_item, TSPnodes)
 
 # Initialize item list to store the complete path
 itemlist = []
-total_distance = 0
 
 # Generate the full path using Nearest Neighbor TSP for each segment
 for i in range(len(end_item)):
@@ -197,19 +191,22 @@ for i in range(len(end_item)):
         path = [item_names[j] for j in path_indices]
         for item in path:
             itemlist.append(item)
-            # print(f"{item}: {TSPnodes[item]}")
+            print(f"{item}: {TSPnodes[item]}")
             # print(f"{item}")
-        for k in range(len(path_indices) - 1):
-            total_distance += distance_matrix[path_indices[k], path_indices[k+1]]
     else:
         path_indices = nearest_neighbor_tsp(distance_matrix, shortest_path[i], shortest_path[i+1])  
         path1 = [item_names[j] for j in path_indices]
         for item in path1:
             itemlist.append(item)
-            # print(f"{item}: {TSPnodes[item]}")
+            print(f"{item}: {TSPnodes[item]}")
             # print(f"{item}")
-        for k in range(len(path_indices) - 1):
-            total_distance += distance_matrix[path_indices[k], path_indices[k+1]]
-            
-print("Total Distance:", total_distance)
-print("Path:", itemlist)
+
+# Get the path using nearest neighbor algorithm
+# path_indices = nearest_neighbor_tsp(distance_matrix, start_item, end_item)
+# path = [item_names[i] for i in path_indices]
+
+# # Output the path
+# print(path)
+# print("\nCoordinates for each item in the path:")
+# for item in path:
+#     print(f"{item}: {TSPnodes[item]}")
