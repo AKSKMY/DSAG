@@ -1,6 +1,7 @@
 from flask import Flask, render_template_string
 import pandas as pd
 from sklearn.cluster import KMeans
+import plotly.graph_objs as go
 import plotly.express as px
 
 app = Flask(__name__)
@@ -30,14 +31,40 @@ def index():
     # Get cluster labels and add them to the dataframe
     data['cluster'] = kmeans.labels_
 
-    # Create the plot using Plotly
-    fig = px.scatter_3d(data, x=x_column_name, y=y_column_name, z=z_column_name, color='cluster',
-                        hover_data=[item_column_name], title='3D K-means Clustering of Items')
-    fig.update_traces(marker=dict(size=5), selector=dict(mode='markers'))
-    fig.update_layout(scene=dict(xaxis_title='X Coordinate',
-                                 yaxis_title='Y Coordinate',
-                                 zaxis_title='Z Coordinate'),
-                      margin=dict(l=0, r=0, b=0, t=40))
+    # Create the plot
+    fig = go.Figure()
+
+    # Add items and lines for each cluster
+    for cluster in range(num_clusters):
+        cluster_data = data[data['cluster'] == cluster]
+        fig.add_trace(go.Scatter3d(
+            x=cluster_data[x_column_name],
+            y=cluster_data[y_column_name],
+            z=cluster_data[z_column_name],
+            mode='markers+text',
+            text=cluster_data[item_column_name],
+            marker=dict(size=5),
+            name=f'Cluster {cluster}'
+        ))
+        
+        # Add lines connecting items within the same cluster
+        fig.add_trace(go.Scatter3d(
+            x=cluster_data[x_column_name],
+            y=cluster_data[y_column_name],
+            z=cluster_data[z_column_name],
+            mode='lines',
+            line=dict(color='gray', width=1),
+            showlegend=False
+        ))
+
+    fig.update_layout(
+        scene=dict(
+            xaxis_title='X Coordinate',
+            yaxis_title='Y Coordinate',
+            zaxis_title='Z Coordinate'
+        ),
+        title='3D K-means Clustering of Items'
+    )
     plot_html = fig.to_html(full_html=False)
 
     # Cluster analysis summary
@@ -50,7 +77,7 @@ def index():
 
     summary_html = cluster_summary.to_html(classes='table table-striped', index=False)
 
-     # HTML template
+    # HTML template
     template = """
     <!doctype html>
     <html>
@@ -87,7 +114,7 @@ def index():
     </html>
     """
 
-    return render_template_string(template, plot_html=plot_html)
+    return render_template_string(template, plot_html=plot_html, summary_html=summary_html)
 
 if __name__ == '__main__':
     app.run(debug=True)
