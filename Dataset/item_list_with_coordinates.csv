@@ -1,88 +1,85 @@
 Item,Group,X,Y,Z
 Soda,Fresh Food,3.0,4.0,2.0
-Tuna,Fresh Food,3.0,6.0,2.0
-Rice,Fresh Food,3.0,8.0,2.0
-Eggs,Fresh Food,3.0,10.0,2.0
-Shrimp,Fresh Food,5.0,4.0,2.0
-Butter,Fresh Food,5.0,6.0,2.0
+Butter,Fresh Food,3.0,6.0,2.0
+Shrimp,Fresh Food,3.0,8.0,2.0
+Rice,Fresh Food,3.0,10.0,2.0
+Tuna,Fresh Food,5.0,4.0,2.0
+Eggs,Fresh Food,5.0,6.0,2.0
 Carrots,Fresh Food,5.0,8.0,2.0
-Bread,Fresh Food,5.0,10.0,2.0
-Apple,Fresh Food,7.0,4.0,2.0
-Ice Cream,Fresh Food,7.0,6.0,2.0
-Spinach,Fresh Food,7.0,8.0,2.0
-Chicken,Fresh Food,7.0,10.0,2.0
-Milk,Fresh Food,9.0,4.0,2.0
-Orange,Fresh Food,9.0,6.0,2.0
-Tomatoes,Fresh Food,9.0,8.0,2.0
-Missing Item 1,Fresh Food,9.0,10.0,2.0
-Potatoes,Fresh Food,11.0,4.0,2.0
-Onions,Fresh Food,11.0,6.0,2.0
-Salmon,Fresh Food,11.0,8.0,2.0
-Yogurt,Fresh Food,11.0,10.0,2.0
+Apple,Fresh Food,5.0,10.0,2.0
+Spinach,Fresh Food,7.0,4.0,2.0
+Chicken,Fresh Food,7.0,6.0,2.0
+Tomatoes,Fresh Food,7.0,8.0,2.0
+Milk,Fresh Food,7.0,10.0,2.0
+Orange,Fresh Food,9.0,4.0,2.0
+Yogurt,Fresh Food,9.0,6.0,2.0
+Banana,Fresh Food,9.0,8.0,2.0
+Beef,Fresh Food,9.0,10.0,2.0
+Bread,Fresh Food,11.0,4.0,2.0
+Ice Cream,Fresh Food,11.0,6.0,2.0
+Onions,Fresh Food,11.0,8.0,2.0
+Salmon,Fresh Food,11.0,10.0,2.0
 Cereal,Fresh Food,13.0,4.0,2.0
-Banana,Fresh Food,13.0,6.0,2.0
-Cheese,Fresh Food,13.0,8.0,2.0
-Pickles,Fresh Food,13.0,10.0,2.0
-Beef,Fresh Food,15.0,4.0,2.0
-Ketchup,Fresh Food,15.0,6.0,2.0
-Water,Fresh Food,15.0,8.0,2.0
-Chips,Fresh Food,15.0,10.0,2.0
-Deodorant,Home Care,3.0,4.0,7.0
-Missing Item 2,Home Care,3.0,6.0,7.0
-Vacuum Cleaner,Home Care,3.0,8.0,7.0
-Trash Bags,Home Care,3.0,10.0,7.0
-Mop,Home Care,5.0,4.0,7.0
-Dustpan,Home Care,5.0,6.0,7.0
-Broom,Home Care,5.0,8.0,7.0
-Hair Gel,Home Care,5.0,10.0,7.0
-Baby Wipes,Home Care,7.0,4.0,7.0
-Shower Gel,Home Care,7.0,6.0,7.0
-Trash Cans,Home Care,7.0,8.0,7.0
-Cleaning Spray,Home Care,7.0,10.0,7.0
-Dish Soap,Home Care,9.0,4.0,7.0
-Sponges,Home Care,9.0,6.0,7.0
+Chips,Fresh Food,13.0,6.0,2.0
+Water,Fresh Food,13.0,8.0,2.0
+Ketchup,Fresh Food,13.0,10.0,2.0
+Potatoes,Fresh Food,15.0,4.0,2.0
+Cheese,Fresh Food,15.0,6.0,2.0
+Pickles,Fresh Food,15.0,8.0,2.0
+Razors,Home Care,3.0,4.0,7.0
+Sponges,Home Care,3.0,6.0,7.0
+Feminine Hygiene Products,Home Care,3.0,8.0,7.0
+Dish Soap,Home Care,3.0,10.0,7.0
+Broom,Home Care,5.0,4.0,7.0
+Hair Gel,Home Care,5.0,6.0,7.0
+Trash Bags,Home Care,5.0,8.0,7.0
+Bath Towels,Home Care,5.0,10.0,7.0
+Trash Cans,Home Care,7.0,4.0,7.0
+Diapers,Home Care,7.0,6.0,7.0
+Cleaning Spray,Home Care,7.0,8.0,7.0
+Vacuum Cleaner,Home Care,7.0,10.0,7.0
+Mop,Home Care,9.0,4.0,7.0
+Toothbrush,Home Care,9.0,6.0,7.0
 Toilet Paper,Home Care,9.0,8.0,7.0
-Shaving Cream,Home Care,9.0,10.0,7.0
-Laundry Detergent,Home Care,11.0,4.0,7.0
-Ironing Board,Home Care,11.0,6.0,7.0
-Shampoo,Home Care,11.0,8.0,7.0
-Razors,Home Care,11.0,10.0,7.0
-Garden Hose,Home Care,13.0,4.0,7.0
-Feminine Hygiene Products,Home Care,13.0,6.0,7.0
-Insect Repellent,Home Care,13.0,8.0,7.0
-Soap,Home Care,13.0,10.0,7.0
-Diapers,Home Care,15.0,4.0,7.0
-Bath Towels,Home Care,15.0,6.0,7.0
-Hand Sanitizer,Home Care,15.0,8.0,7.0
-Toothbrush,Home Care,15.0,10.0,7.0
-Light Bulbs,Pantry and Household Supplies,3.0,4.0,12.0
-Syrup,Pantry and Household Supplies,3.0,6.0,12.0
-Pancake Mix,Pantry and Household Supplies,3.0,8.0,12.0
-Pasta,Pantry and Household Supplies,3.0,10.0,12.0
-Canned Soup,Pantry and Household Supplies,5.0,4.0,12.0
-Vinegar,Pantry and Household Supplies,5.0,6.0,12.0
-Iron,Pantry and Household Supplies,5.0,8.0,12.0
-Cereal Bars,Pantry and Household Supplies,5.0,10.0,12.0
-Extension Cords,Pantry and Household Supplies,7.0,4.0,12.0
-Tissues,Pantry and Household Supplies,7.0,6.0,12.0
-Jam,Pantry and Household Supplies,7.0,8.0,12.0
-Honey,Pantry and Household Supplies,7.0,10.0,12.0
-Power Strips,Pantry and Household Supplies,9.0,4.0,12.0
-Toothpaste,Pantry and Household Supplies,9.0,6.0,12.0
+Deodorant,Home Care,9.0,10.0,7.0
+Insect Repellent,Home Care,11.0,4.0,7.0
+Hand Sanitizer,Home Care,11.0,6.0,7.0
+Shower Gel,Home Care,11.0,8.0,7.0
+Soap,Home Care,11.0,10.0,7.0
+Shaving Cream,Home Care,13.0,4.0,7.0
+Baby Wipes,Home Care,13.0,6.0,7.0
+Dustpan,Home Care,13.0,8.0,7.0
+Ironing Board,Home Care,13.0,10.0,7.0
+Laundry Detergent,Home Care,15.0,4.0,7.0
+Garden Hose,Home Care,15.0,6.0,7.0
+Shampoo,Home Care,15.0,8.0,7.0
+Pancake Mix,Pantry and Household Supplies,3.0,4.0,12.0
+Air Freshener,Pantry and Household Supplies,3.0,6.0,12.0
+Syrup,Pantry and Household Supplies,3.0,8.0,12.0
+Jam,Pantry and Household Supplies,3.0,10.0,12.0
+Extension Cords,Pantry and Household Supplies,5.0,4.0,12.0
+Pasta,Pantry and Household Supplies,5.0,6.0,12.0
+Cereal Bars,Pantry and Household Supplies,5.0,8.0,12.0
+Canned Soup,Pantry and Household Supplies,5.0,10.0,12.0
+Light Bulbs,Pantry and Household Supplies,7.0,4.0,12.0
+Iron,Pantry and Household Supplies,7.0,6.0,12.0
+Tissues,Pantry and Household Supplies,7.0,8.0,12.0
+Vinegar,Pantry and Household Supplies,7.0,10.0,12.0
+Toothpaste,Pantry and Household Supplies,9.0,4.0,12.0
+Power Strips,Pantry and Household Supplies,9.0,6.0,12.0
 Dishware,Pantry and Household Supplies,9.0,8.0,12.0
 Mayonnaise,Pantry and Household Supplies,9.0,10.0,12.0
-Mustard,Pantry and Household Supplies,11.0,4.0,12.0
-Olive Oil,Pantry and Household Supplies,11.0,6.0,12.0
-Peanut Butter,Pantry and Household Supplies,11.0,8.0,12.0
-Coffee,Pantry and Household Supplies,11.0,10.0,12.0
+Paper Towels,Pantry and Household Supplies,11.0,4.0,12.0
+Cleaning Rags,Pantry and Household Supplies,11.0,6.0,12.0
+Mustard,Pantry and Household Supplies,11.0,8.0,12.0
+Plant Fertilizer,Pantry and Household Supplies,11.0,10.0,12.0
 Tea,Pantry and Household Supplies,13.0,4.0,12.0
-Cleaning Rags,Pantry and Household Supplies,13.0,6.0,12.0
-Paper Towels,Pantry and Household Supplies,13.0,8.0,12.0
-Lawn Mower,Pantry and Household Supplies,13.0,10.0,12.0
-BBQ Sauce,Pantry and Household Supplies,15.0,4.0,12.0
-Plant Fertilizer,Pantry and Household Supplies,15.0,6.0,12.0
-Air Freshener,Pantry and Household Supplies,15.0,8.0,12.0
-Missing Item 3,Pantry and Household Supplies,15.0,10.0,12.0
+BBQ Sauce,Pantry and Household Supplies,13.0,6.0,12.0
+Olive Oil,Pantry and Household Supplies,13.0,8.0,12.0
+Peanut Butter,Pantry and Household Supplies,13.0,10.0,12.0
+Honey,Pantry and Household Supplies,15.0,4.0,12.0
+Lawn Mower,Pantry and Household Supplies,15.0,6.0,12.0
+Coffee,Pantry and Household Supplies,15.0,8.0,12.0
 Stairs 1,Stairs,2.0,3.0,2.0
 Stairs 2,Stairs,2.0,3.0,7.0
 Stairs 3,Stairs,2.0,3.0,12.0
