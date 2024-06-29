@@ -7,11 +7,38 @@ from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
-file_path = "Dataset\Retail_Transactions_Dataset.csv"
-data = pd.read_csv(file_path)
+file_main = "Dataset\Retail_Transactions_Dataset.csv"
+data = pd.read_csv(file_main)
 
-file_path = "Dataset\item_count.csv"
-dataSales = pd.read_csv(file_path)
+file_count = "Dataset\item_count.csv"
+dataSales = pd.read_csv(file_count)
+
+file_stock = "Dataset\item_stock.csv"
+dataStock = pd.read_csv(file_stock)
+
+# Get the number of total sales for each product
+def countItems():
+    # Split by quotation marks and count the occurrences of each item
+    # Will count , [ and ] symbols as well
+    itemCount = data['Product'].str.split('\'').explode().value_counts()
+    itemCount = itemCount.iloc[3:]
+    print(itemCount)
+
+    return itemCount
+    # Write wordCounts to a CSV file
+    # itemCount.to_csv('itemCount1.csv')
+
+# Generate random numbers as stock for each item
+def stockItems():
+    file_path = "Dataset\item_count.csv"
+    dataStock = pd.read_csv(file_path)
+
+    # Let's say we want the random number to be between 1 and 100
+    dataStock['Stock'] = np.random.randint(1, 750 + 1, size=len(dataStock))
+    
+    # Write the updated DataFrame to a new CSV file
+    dataStock.to_csv('item_stock.csv', index=False)
+
 
 def splitDate():
     # Convert the 'Date' column to datetime format
@@ -91,8 +118,8 @@ def linearRegression(data):
         # Create a new_row with the product, metrics, and predictions
         new_row = {
             'Product': product,
-            'MAE': mae,
-            'RMSE': rmse,
+            # 'MAE': mae,
+            # 'RMSE': rmse,
             'Prediction': round(next_month_prediction[0]),
             'NextYear': next_year,
             'NextMonth': next_month
@@ -117,11 +144,9 @@ def JIT(data, demand_forecast):
     merged_data = pd.merge(data, demand_forecast, on='Product')
 
     # Calculate the difference between current inventory and forecasted demand
-    merged_data['Difference'] = merged_data['Inventory'] - merged_data['Prediction']
-
     # If the difference is negative, order the absolute value of the difference
     # If the difference is positive or zero, order nothing
-    merged_data['Order'] = merged_data['Difference'].apply(lambda x: abs(x) if x < 0 else 0)
+    merged_data['Order'] = (merged_data['Stock'] - merged_data['Prediction']).apply(lambda x: abs(x) if x < 0 else 0)
 
     return merged_data
 
@@ -148,6 +173,7 @@ def EOQ():
         # Create a new_row with the product and EOQ values
         new_row = {
             'Product': product,
+            'Demand Rate': demand_rate,
             'EOQ': round(EOQ),
             'TotalOrderCost': round(total_cost, 2)
         }
@@ -161,7 +187,35 @@ def EOQ():
     return EOQ_df
 
 
-splitDate()
-# JIT(data, linearRegression(data))
+def graph():
+    # Constants
+    D = 1000  # Demand rate (units per year)
+    S = 100   # Setup or order cost ($ per order)
+    H = 2.5   # Holding cost ($ per unit per year)
 
-print(EOQ())
+    # Function to calculate total cost
+    def total_cost(Q, D, S, H):
+        ordering_cost = D / Q * S
+        carrying_cost = Q / 2 * H
+        return ordering_cost + carrying_cost
+
+    # Generate a range of order quantities
+    Q_values = np.arange(1, 1001, 10)  # From 1 to 1000 in steps of 10
+
+    # Calculate total cost for each Q
+    TC_values = [total_cost(Q, D, S, H) for Q in Q_values]
+
+    # Plotting
+    plt.figure(figsize=(10, 6))
+    plt.plot(Q_values, TC_values, marker='o', linestyle='-', color='b')
+    plt.title('Total Cost vs. Order Quantity')
+    plt.xlabel('Order Quantity (Q)')
+    plt.ylabel('Total Cost')
+    plt.grid(True)
+    plt.show()
+
+splitDate()
+# print(historicSales(data, "Toothpaste"))
+print(JIT(dataStock, linearRegression(data)))
+
+# print(EOQ())
